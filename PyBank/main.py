@@ -56,21 +56,17 @@ print(f"Greatest Increase In Profits: {l_i_date} (${largest_increase})")
 print(f"Greatest Decrease In Profits: {l_d_date} (${largest_decrease})")
 print("-------------------------------------") 
 
-# Store a list to hold all the lines to be exported to a .txt file
-lines = ["-------------------------------------",
-        "Financial Analysis",
-        "-------------------------------------",
-        (f"Total Months: {months}"),
-        (f"Total: ${total_profit}"),
-        (f"Average Change: ${str(round(average_difference, 2))}"),
-        (f"Greatest Increase In Profits: {l_i_date} (${largest_increase})"),
-        (f"Greatest Decrease In Profits: {l_d_date} (${largest_decrease})"),
-        "-------------------------------------"]
-
 # Dictate a path where the .txt file will go
 text_file_path = 'Documents/August_Data_Analytics_Cohort/DataBootcamp/Homework-Repositories/python-challenge/PyBank/Analysis/pybank.txt'
 
-# Create the .txt file and loop though the 'lines' list to export each line to a .txt file.
+# Create the .txt file and write each individual 'print' line to the file.
 with open(text_file_path, "w") as file:
-    for i in lines:
-        file.write(i + "\n")
+    file.write("-------------------------------------\n")
+    file.write("Financial Analysis\n")
+    file.write("-------------------------------------\n")
+    file.write(f"Total Months: {months}\n")
+    file.write(f"Total: ${total_profit}\n")   
+    file.write(f"Average Change: ${str(round(average_difference, 2))}\n")
+    file.write(f"Greatest Increase In Profits: {l_i_date} (${largest_increase})\n")
+    file.write(f"Greatest Decrease In Profits: {l_d_date} (${largest_decrease})\n")
+    file.write("-------------------------------------\n")

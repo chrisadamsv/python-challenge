@@ -18,15 +18,15 @@ with open(csvpath, 'r', newline='' ) as csvfile:
     header = next(csvreader)
     
 # Loop through each row after the header and tabulate each row into the total_votes, then...
-    for row in csvreader:
+    for vote in csvreader:
         total_votes += 1
 # ... check if the candidate does NOT exist in the candidates list. If they do not, add their name to the candidate list and add the vote to their vote share
-        if row[2] not in candidates:
-            candidates.append(row[2])
+        if vote[2] not in candidates:
+            candidates.append(vote[2])
             vote_share.append(1)
 # If they are on the candidates list, pull their name in the index and add the vote to their vote share
         else:
-            candidates_index = candidates.index(row[2])
+            candidates_index = candidates.index(vote[2])
             vote_share[candidates_index] += 1
 
 # Loop through the list of candidates and calculate their share of the vote against the total votes recieved, then format to a percent and add that number to the percent_share list   
@@ -53,22 +53,18 @@ print("----------------------------------------")
 print(f"Winner: {winner_name}")
 print("-------------------------")
 
-# Store a list to hold all the lines to be exported to a .txt file
-lines = ["-------------------------",
-        "Election Results",
-        "-------------------------",
-        (f"Total Votes: {total_votes}"),
-        "----------------------------------------",
-        (f"{candidates[0]}: {percent_share[0]} ({vote_share[0]})"),
-        (f"{candidates[1]}: {percent_share[1]} ({vote_share[1]})"),
-        (f"{candidates[2]}: {percent_share[2]} ({vote_share[2]})"),
-        "----------------------------------------",
-        (f"Winner: {winner_name}"),
-        "-------------------------"]
 # Dictate a path where the .txt file will go
 txt_file_path = 'Documents/August_Data_Analytics_Cohort/DataBootcamp/Homework-Repositories/python-challenge/PyPoll/Analysis/pypoll.txt'
 
 # Create the .txt file and loop though the 'lines' list to export each line to a .txt file.
 with open(txt_file_path, "w") as file:
-    for i in lines:
-        file.write(i + "\n")
+    file.write("-------------------------\n")
+    file.write("Election Results\n")
+    file.write("-------------------------\n")
+    file.write(f"Total Votes: {total_votes}\n")
+    file.write("----------------------------------------\n")
+    for i in range(len(candidates)):
+        file.write(f"{candidates[i]}: {percent_share[i]} ({vote_share[i]})" + "\n")
+    file.write("----------------------------------------\n")
+    file.write(f"Winner: {winner_name}\n")
+    file.write("-------------------------\n")
