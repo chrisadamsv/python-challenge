@@ -3,7 +3,7 @@ import os
 import csv
 
 # Create a path to the csv file to be used
-csvpath = os.path.join("PyPoll/Resources/election_data.csv")
+csvpath = os.path.join("Resources","election_data.csv")
 
 # Create a variable to tabulate the total votes cast
 total_votes = 0
@@ -54,7 +54,7 @@ print(f"Winner: {winner_name}")
 print("-------------------------")
 
 # Dictate a path where the .txt file will go
-txt_file_path = os.path.join("PyPoll/analysis/pypoll.txt")
+txt_file_path = os.path.join("analysis","pypoll.txt")
 
 # Create the .txt file and loop though the 'lines' list to export each line to a .txt file.
 with open(txt_file_path, "w") as file:

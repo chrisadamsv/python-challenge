@@ -3,8 +3,8 @@ import os
 import csv
 
 # Create a path to the csv file to be used
-csvpath = os.path.join('PyBank/Resources/budget_data.csv')
-
+csvpath = os.path.join("Resources","budget_data.csv")
+ 
 # Create a list to store the date values and the difference between the profits of each month
 dates = []
 profits_losses = []
@@ -57,7 +57,7 @@ print(f"Greatest Decrease In Profits: {l_d_date} (${largest_decrease})")
 print("-------------------------------------") 
 
 # Dictate a path where the .txt file will go
-text_file_path = os.path.join('PyBank/analysis/pybank.txt')
+text_file_path = os.path.join("analysis","pybank.txt")
 
 # Create the .txt file and write each individual 'print' line to the file.
 with open(text_file_path, "w") as file:
